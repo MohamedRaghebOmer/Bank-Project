@@ -32,5 +32,11 @@
     <ClInclude Include="clsString.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="clsScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="clsMainMenueScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
