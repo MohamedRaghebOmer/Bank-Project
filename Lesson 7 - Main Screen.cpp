@@ -1,10 +1,9 @@
 #include <iostream>
-#include "clsMainMenueScreen.h"
-using namespace std;
+#include "clsLoginScreen.h"
 
 int main()
 {
-    clsMainMenueScreen::ShowMainMenueScreen();
+    clsLoginScreen::ShowLoginScreen();
 
     system("pause>0");
     return 0;

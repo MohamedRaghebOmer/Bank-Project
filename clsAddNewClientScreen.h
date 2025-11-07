@@ -5,6 +5,7 @@
 #include "clsBankClient.h"
 #include "clsInputValidate.h"
 #include <iomanip>
+#include "Global.h"
 
 class clsAddNewClientScreen : public clsScreen
 {

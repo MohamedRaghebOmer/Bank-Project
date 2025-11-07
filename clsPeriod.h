@@ -1,5 +1,6 @@
 #pragma once
 #include "clsDate.h"
+#include "Global.h"
 
 class clsPeriod
 {

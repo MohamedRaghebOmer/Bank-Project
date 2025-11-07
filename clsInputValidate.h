@@ -3,7 +3,7 @@
 #include <string>
 #include "clsDate.h"
 #include "clsPeriod.h"
-using namespace std;
+#include "Global.h"
 
 class clsInputValidate
 {

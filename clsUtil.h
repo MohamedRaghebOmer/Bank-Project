@@ -4,7 +4,7 @@
 #include <cmath>
 #include <cstdlib>
 #include <ctime>
-using namespace std;
+#include "Global.h"
 
 class clsUtil
 {

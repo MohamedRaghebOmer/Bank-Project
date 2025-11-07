@@ -5,6 +5,7 @@
 #include "clsUser.h"
 #include "clsInputValidate.h"
 #include <iomanip>
+#include "Global.h"
 
 class clsAddNewUserScreen : protected clsScreen
 {

@@ -11,7 +11,7 @@
 #include "clsFindClientScreen.h"
 #include "clsTransactionsScreen.h"
 #include "clsManageUsersScreen.h"
-using namespace std;
+#include "Global.h"
 
 class clsMainMenueScreen : public clsScreen
 {

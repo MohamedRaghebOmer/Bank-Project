@@ -4,7 +4,7 @@
 #include "clsPerson.h"
 #include "clsBankClient.h"
 #include "clsInputValidate.h"
-
+#include "Global.h"
 class clsFindClientScreen :protected clsScreen
 {
 

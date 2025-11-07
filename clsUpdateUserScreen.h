@@ -4,6 +4,7 @@
 #include "clsPerson.h"
 #include "clsUser.h"
 #include "clsInputValidate.h"
+#include "Global.h"
 
 class clsUpdateUserScreen : protected clsScreen
 

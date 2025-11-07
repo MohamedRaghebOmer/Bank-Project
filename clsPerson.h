@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include "Global.h"
 using namespace std;
 
 class clsPerson

@@ -5,8 +5,8 @@
 #include "clsString.h"
 #include <vector>
 #include <fstream>
+#include "Global.h"
 
-using namespace std;
 class clsBankClient : public clsPerson
 {
 private:

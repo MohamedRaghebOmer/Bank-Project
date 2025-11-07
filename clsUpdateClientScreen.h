@@ -4,6 +4,7 @@
 #include "clsPerson.h"
 #include "clsBankClient.h"
 #include "clsInputValidate.h"
+#include "Global.h"
 
 class clsUpdateClientScreen : protected clsScreen
 
@@ -60,7 +61,7 @@ public:
 
         _PrintClient(Client1);
 
-        cout << "\nAre you sure you want to update this client y/n? ";
+        cout << "\nAre you sure you want to update this client [Y|N]: ";
 
         char Answer = 'n';
         cin >> Answer;

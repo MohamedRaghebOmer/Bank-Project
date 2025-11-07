@@ -3,7 +3,7 @@
 #include "clsScreen.h"
 #include "clsBankClient.h"
 #include "clsInputValidate.h"
-
+#include "Global.h"
 class clsDeleteClientScreen :protected clsScreen
 {
 
@@ -41,7 +41,7 @@ public:
         clsBankClient Client1 = clsBankClient::Find(AccountNumber);
         _PrintClient(Client1);
 
-        cout << "\nAre you sure you want to delete this client y/n? ";
+        cout << "\nAre you sure you want to delete this client [Y|N]: ";
 
         char Answer = 'n';
         cin >> Answer;

@@ -9,7 +9,7 @@
 #include "clsDeleteUserScreen.h"
 #include "clsUpdateUserScreen.h"
 #include "clsFindUserScreen.h"
-using namespace std;
+#include "Global.h"
 
 class clsManageUsersScreen : public clsScreen
 {

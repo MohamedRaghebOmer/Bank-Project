@@ -4,6 +4,7 @@
 #include "clsScreen.h"
 #include "clsBankClient.h"
 #include "clsInputValidate.h"
+#include "Global.h"
 
 class clsWithdrawScreen : protected clsScreen
 {

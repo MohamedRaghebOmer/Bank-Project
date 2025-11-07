@@ -2,8 +2,7 @@
 
 #include <iostream>
 #include <vector>
-
-using namespace std;
+#include "Global.h"
 
 class clsString
 {

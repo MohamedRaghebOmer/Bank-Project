@@ -4,7 +4,7 @@
 #include "clsPerson.h"
 #include "clsUser.h"
 #include "clsInputValidate.h"
-
+#include "Global.h"
 class clsDeleteUserScreen :protected clsScreen
 {
 

@@ -4,6 +4,7 @@
 #include "clsBankClient.h"
 #include <iomanip>
 #include "clsUtil.h"
+#include "Global.h"
 
 class clsTotalBalancesScreen : protected clsScreen
 {

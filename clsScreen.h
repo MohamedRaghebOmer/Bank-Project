@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
-using namespace std;
-
+#include "Global.h"
 class clsScreen
 {
 protected:

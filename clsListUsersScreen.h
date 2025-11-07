@@ -4,7 +4,7 @@
 #include "clsScreen.h"
 #include "clsUser.h"
 #include <iomanip>
-
+#include "Global.h"
 class clsListUsersScreen : protected clsScreen
 {
 
