@@ -28,7 +28,7 @@ public:
     static void ShowDeleteClientScreen()
     {
 
-        _DrawScreenHeader("\tDelete Client Screen");
+        _DrawScreenHeader("Delete Client Screen");
 
         string AccountNumber = clsInputValidate::ReadString("Please Enter Account Number: ");
         
