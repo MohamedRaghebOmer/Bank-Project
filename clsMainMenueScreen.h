@@ -10,6 +10,7 @@
 #include "clsUpdateClientScreen.h"
 #include "clsFindClientScreen.h"
 #include "clsTransactionsScreen.h"
+#include "clsManageUsersScreen.h"
 using namespace std;
 
 class clsMainMenueScreen : public clsScreen
@@ -21,7 +22,7 @@ private:
         return clsInputValidate::ReadShortNumberBetween(1, 8, "Choose what do you want to do [1 to 8]: ");
     }
 
-    enum enMainMenueOptions 
+    enum enMainMenueOptions
     {
         eClientsList = 1, eAddNewClient = 2, eDeleteClient = 3,
         eUpdateClient = 4, eFindClient = 5, eShowTransactionsMenue = 6,
@@ -67,7 +68,7 @@ private:
 
     static void _ShowManageUsersMenue()
     {
-        
+        clsManageUsersScreen::ShowManageUsersMenue();
     }
 
     static void _ShowEndScreen()
@@ -111,7 +112,7 @@ private:
         case eFindClient:
         {
             system("cls");
-            _ShowFindClientScreen ();
+            _ShowFindClientScreen();
             _GoToBackToMainMenue();
             break;
         }
@@ -146,10 +147,10 @@ private:
 
 public:
 
-	static void ShowMainMenueScreen()
-	{
+    static void ShowMainMenueScreen()
+    {
         system("cls");
-		clsScreen::_DrawScreenHeader("Manin Menue");
+        clsScreen::_DrawScreenHeader("Manin Menue");
         cout << "\t[1] Show Client List." << endl;
         cout << "\t[2] Add New Client." << endl;
         cout << "\t[3] Delete Client." << endl;
@@ -160,6 +161,6 @@ public:
         cout << "\t[8] Logout." << endl;
         cout << "===========================================" << endl;
         _PerformMainMenueChoose((enMainMenueOptions)_ReadMainMenueChoose());
-	}
+    }
 };
 
