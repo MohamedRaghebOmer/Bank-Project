@@ -59,9 +59,120 @@ public:
     }
 
 
-    // ----------------------ReadNumber---------------------
+    // ----------------------short Numbers---------------------
+    static short ReadShortNumber(const string& EnterNumberMessage =
+        "Enter number: ", const string& FailMessage =
+        "Invalid number, please try again.\n\n")
+    {
+        string Input = "";
+        short Number = 0;
+
+        while (true)
+        {
+            cout << EnterNumberMessage;
+            cin >> Input;
+
+            try
+            {
+                Number = static_cast<short>(stoi(Input));
+                return Number;
+            }
+            catch (...)
+            {
+                cout << FailMessage;
+            }
+        }
+    }
+
+    static short ReadPositiveShort(bool ZeroIsPositive = true,
+        const string& EnterNumberMessage = "Enter positive number: ",
+        const string& FailMessage = "Invalid number, please try again.\n\n")
+    {
+        short PositiveShort = -1;
+
+        PositiveShort = ReadShortNumber(EnterNumberMessage, FailMessage);
+
+        if (ZeroIsPositive)
+        {
+            while (PositiveShort < 0) // negative can equal [0]
+            {
+                cout << FailMessage;
+                PositiveShort = ReadShortNumber(EnterNumberMessage, FailMessage);
+            }
+        }
+        else
+        {
+            while (PositiveShort <= 0) // PositiveShort can NOT equal [0]
+            {
+                cout << FailMessage;
+                PositiveShort = ReadShortNumber(EnterNumberMessage, FailMessage);
+            }
+        }
+
+        return PositiveShort;
+    }
+
+    static short ReadNegativeShort(bool ZeroIsnegative = false,
+        const string& EnterNumberMessage = "Enter positive number: ",
+        const string& FailMessage = "Invalid number, please try again.\n\n")
+    {
+        short negativeShort = 1;
+
+        negativeShort = ReadShortNumber(EnterNumberMessage, FailMessage);
+
+        if (ZeroIsnegative)
+        {
+            while (negativeShort > 0) // negativeShort can equal [0]
+            {
+                cout << FailMessage;
+                negativeShort = ReadShortNumber(EnterNumberMessage, FailMessage);
+            }
+        }
+        else
+        {
+            while (negativeShort >= 0) // cannot equal [0]
+            {
+                cout << FailMessage;
+                negativeShort = ReadShortNumber(EnterNumberMessage, FailMessage);
+            }
+        }
+
+        return negativeShort;
+    }
+
+    static short ReadShortNumberBetween(short From,
+        short To, const string& EnterNumberMessage,
+        bool CanBeFromOrTo = true,
+        const string& FailMessage = "Invalid number, please try again.\n\n")
+    {
+        short Number = 0;
+
+        Number = ReadShortNumber(EnterNumberMessage, FailMessage);
+
+        if (CanBeFromOrTo)
+        {
+            while (!IsNumberBetween(Number, From, To, true))
+            {
+                cout << FailMessage;
+                Number = ReadShortNumber(EnterNumberMessage, FailMessage);
+            }
+        }
+        else
+        {
+            while (!IsNumberBetween(Number, From, To, false))
+            {
+                cout << FailMessage;
+                Number = ReadShortNumber(EnterNumberMessage, FailMessage);
+            }
+        }
+
+        return Number;
+    }
+
+
+    // ----------------------Int Numbers---------------------
     static int ReadIntNumber(const string& EnterNumberMessage = "Enter number: ",
-        const string& FailMessage = "Invalid number, please try again.\n")
+        const string& FailMessage = "Invalid number, please try again.\n\n")
     {
         string Input = "";
         int Number = 0;
@@ -85,7 +196,7 @@ public:
 
     static int ReadPositiveInt(bool ZeroIsPositive = true,
         const string& EnterNumberMessage = "Enter positive number: ",
-        const string& FailMessage = "Invalid number, please try again.\n")
+        const string& FailMessage = "Invalid number, please try again.\n\n")
     {
         int PositiveInt = -1;
 
@@ -114,7 +225,7 @@ public:
 
     static int ReadNegativeInt(bool ZeroIsnegative = false, const string& EnterNumberMessage =
         "Enter negative number: ", const string& FailMessage =
-        "Invalid number, please try again.\n")
+        "Invalid number, please try again.\n\n")
     {
         int negativeInt = 1;
 
@@ -142,7 +253,7 @@ public:
 
     static int ReadIntNumberBetween(int From, int To,
         const string& EnterNumberMessage, bool CanBeFromOrTo = true,
-        const string& FailMessage = "Invalid number please try again.\n")
+        const string& FailMessage = "Invalid number please try again.\n\n")
     {
         int Number = ReadIntNumber(EnterNumberMessage, FailMessage);
 
@@ -169,7 +280,7 @@ public:
     //--------Float numbers--------
     static float ReadFloatNumber(const string& EnterNumberMessage =
         "Enter number: ", const string& FailMessage =
-        "Invalid number, please try again.\n")
+        "Invalid number, please try again.\n\n")
     {
         string Input = "";
         float Number = 0;
@@ -193,7 +304,7 @@ public:
 
     static float ReadPositiveFloat(bool ZeroIsPositive = true,
         const string& EnterNumberMessage = "Enter positive number: ",
-        const string& FailMessage = "Invalid number, please try again.\n")
+        const string& FailMessage = "Invalid number, please try again.\n\n")
     {
         float PositiveFloat = -1;
 
@@ -221,7 +332,7 @@ public:
 
     static float ReadNegativeFloat(bool ZeroIsnegative = false,
         const string& EnterNumberMessage = "Enter positive number: ",
-        const string& FailMessage = "Invalid number, please try again.\n")
+        const string& FailMessage = "Invalid number, please try again.\n\n")
     {
         float negativeFloat = 1;
 
@@ -250,7 +361,7 @@ public:
     static float ReadFloatNumberBetween(float From,
         float To, const string& EnterNumberMessage,
         bool CanBeFromOrTo = true,
-        const string& FailMessage = "Invalid number, please try again.\n")
+        const string& FailMessage = "Invalid number, please try again.\n\n")
     {
         float Number = 0;
 
@@ -280,7 +391,7 @@ public:
     //--------Double numbers--------
     static double ReadDblNumber(const string& EnterNumberMessage =
         "Enter number: ", const string& FailMessage =
-        "Invalid number, please try again.\n")
+        "Invalid number, please try again.\n\n")
     {
         string Input = "";
         double Number = 0;
@@ -304,7 +415,7 @@ public:
 
     static double ReadPositiveDbl(bool ZeroIsPositive = true,
         const string& EnterNumberMessage = "Enter positive number: ",
-        const string& FailMessage = "Invalid number, please try again.\n")
+        const string& FailMessage = "Invalid number, please try again.\n\n")
     {
         double PositiveDbl = -1;
 
@@ -332,7 +443,7 @@ public:
 
     static double ReadNegativeDbl(bool ZeroIsnegative = false,
         const string& EnterNumberMessage = "Enter positive number: ",
-        const string& FailMessage = "Invalid number, please try again.\n")
+        const string& FailMessage = "Invalid number, please try again.\n\n")
     {
         double negativeDbl = 1;
 
@@ -362,7 +473,7 @@ public:
     static double ReadDblNumberBetween(double From,
         double To, const string& EnterNumberMessage,
         bool CanBeFromOrTo = true,
-        const string& FailMessage = "Invalid number, please try again.\n")
+        const string& FailMessage = "Invalid number, please try again.\n\n")
     {
         double Number = 0;
 
@@ -394,10 +505,10 @@ public:
         const string& EnterDayMessage = "Enter day: ",
         const string& EnterMonthMessage = "Enter month: ",
         const string& EnterYearMessage = "Enter year: ",
-        const string& DayFail = "Invalid day, please try again.\n",
-        const string& MonthFail = "Invalid month, please try again.\n",
-        const string& YearFail = "Invalid year, please try again.\n",
-        const string& DateFail = "Invalid date, please try again.\n")
+        const string& DayFail = "Invalid day, please try again.\n\n",
+        const string& MonthFail = "Invalid month, please try again.\n\n",
+        const string& YearFail = "Invalid year, please try again.\n\n",
+        const string& DateFail = "Invalid date, please try again.\n\n")
     {
         clsDate Date(0, 0, 0);
 
@@ -421,10 +532,10 @@ public:
         const string& EnterDayMessage = "Enter day: ",
         const string& EnterMonthMessage = "Enter month: ",
         const string& EnterYearMessage = "Enter year: ",
-        const string& DayFail = "Invalid day, please try again.\n",
-        const string& MonthFail = "Invalid month, please try again.\n",
-        const string& YearFail = "Invalid year, please try again.\n",
-        const string& DateFail = "Invalid date, please try again.\n")
+        const string& DayFail = "Invalid day, please try again.\n\n",
+        const string& MonthFail = "Invalid month, please try again.\n\n",
+        const string& YearFail = "Invalid year, please try again.\n\n",
+        const string& DateFail = "Invalid date, please try again.\n\n")
     {
         clsDate UserInput;
 
@@ -446,10 +557,10 @@ public:
         const string& EnterDayMessage = "Enter day: ",
         const string& EnterMonthMessage = "Enter month: ",
         const string& EnterYearMessage = "Enter year: ",
-        const string& DayFail = "Invalid day, please try again.\n",
-        const string& MonthFail = "Invalid month, please try again.\n",
-        const string& YearFail = "Invalid year, please try again.\n",
-        const string& DateFail = "Invalid date, please try again.\n")
+        const string& DayFail = "Invalid day, please try again.\n\n",
+        const string& MonthFail = "Invalid month, please try again.\n\n",
+        const string& YearFail = "Invalid year, please try again.\n\n",
+        const string& DateFail = "Invalid date, please try again.\n\n")
     {
         clsDate UserInput;
 
@@ -471,10 +582,10 @@ public:
         const string& EnterDayMessage = "Enter day: ",
         const string& EnterMonthMessage = "Enter month: ",
         const string& EnterYearMessage = "Enter year: ",
-        const string& DayFail = "Invalid day, please try again.\n",
-        const string& MonthFail = "Invalid month, please try again.\n",
-        const string& YearFail = "Invalid year, please try again.\n",
-        const string& DateFail = "Invalid date, please try again.\n")
+        const string& DayFail = "Invalid day, please try again.\n\n",
+        const string& MonthFail = "Invalid month, please try again.\n\n",
+        const string& YearFail = "Invalid year, please try again.\n\n",
+        const string& DateFail = "Invalid date, please try again.\n\n")
     {
         clsDate UserInput;
 
@@ -505,10 +616,10 @@ public:
         const string& EnterDayMessage = "Enter day: ",
         const string& EnterMonthMessage = "Enter month: ",
         const string& EnterYearMessage = "Enter year: ",
-        const string& DayFail = "Invalid day, please try again.\n",
-        const string& MonthFail = "Invalid month, please try again.\n",
-        const string& YearFail = "Invalid year, please try again.\n",
-        const string& DateFail = "Invalid date, please try again.\n")
+        const string& DayFail = "Invalid day, please try again.\n\n",
+        const string& MonthFail = "Invalid month, please try again.\n\n",
+        const string& YearFail = "Invalid year, please try again.\n\n",
+        const string& DateFail = "Invalid date, please try again.\n\n")
     {
         cout << StartingDateMessage;
         clsDate StartDate = ReadDate(EnterDayMessage, EnterMonthMessage,
@@ -524,16 +635,16 @@ public:
 
     static clsPeriod ReadPeriodBefore(
         clsPeriod Period,
-        const string& UserInputNotBeforePeriodMessage = "Invalid Period, please try again.\n",
+        const string& UserInputNotBeforePeriodMessage = "Invalid Period, please try again.\n\n",
         const string& StartingDateMessage = "Period beginning:\n",
         const string& EndingDateMessage = "\nPeriod end:\n",
         const string& EnterDayMessage = "Enter day: ",
         const string& EnterMonthMessage = "Enter month: ",
         const string& EnterYearMessage = "Enter year: ",
-        const string& DayFail = "Invalid day, please try again.\n",
-        const string& MonthFail = "Invalid month, please try again.\n",
-        const string& YearFail = "Invalid year, please try again.\n",
-        const string& DateFail = "Invalid date, please try again.\n")
+        const string& DayFail = "Invalid day, please try again.\n\n",
+        const string& MonthFail = "Invalid month, please try again.\n\n",
+        const string& YearFail = "Invalid year, please try again.\n\n",
+        const string& DateFail = "Invalid date, please try again.\n\n")
     {
         clsPeriod UserInput = ReadPeriod(StartingDateMessage, EndingDateMessage,
             EnterDayMessage, EnterMonthMessage, EnterYearMessage,
@@ -555,16 +666,16 @@ public:
 
     static clsPeriod ReadPeriodAfter(
         clsPeriod Period,
-        const string& UserInputNotAfterPeriodMessage = "Invalid Period, please try again.\n",
+        const string& UserInputNotAfterPeriodMessage = "Invalid Period, please try again.\n\n",
         const string& PeriodStartMessage = "Period beginning:\n",
         const string& PeriodEndMessage = "\nPeriod end:\n",
         const string& EnterDayMessage = "Enter day: ",
         const string& EnterMonthMessage = "Enter month: ",
         const string& EnterYearMessage = "Enter year: ",
-        const string& DayFail = "Invalid day, please try again.\n",
-        const string& MonthFail = "Invalid month, please try again.\n",
-        const string& YearFail = "Invalid year, please try again.\n",
-        const string& DateFail = "Invalid date, please try again.\n")
+        const string& DayFail = "Invalid day, please try again.\n\n",
+        const string& MonthFail = "Invalid month, please try again.\n\n",
+        const string& YearFail = "Invalid year, please try again.\n\n",
+        const string& DateFail = "Invalid date, please try again.\n\n")
     {
         clsPeriod UserInput = ReadPeriod(PeriodStartMessage, PeriodEndMessage,
             EnterDayMessage, EnterMonthMessage, EnterYearMessage,
@@ -583,16 +694,16 @@ public:
 
     static clsPeriod ReadPeriodInPeriod(
         clsPeriod Period,
-        const string& UserInputNotAfterPeriodMessage = "Invalid Period, please try again.\n",
+        const string& UserInputNotAfterPeriodMessage = "Invalid Period, please try again.\n\n",
         const string& PeriodStartMessage = "Period beginning:\n",
         const string& PeriodEndMessage = "\nPeriod end:\n",
         const string& EnterDayMessage = "Enter day: ",
         const string& EnterMonthMessage = "Enter month: ",
         const string& EnterYearMessage = "Enter year: ",
-        const string& DayFail = "Invalid day, please try again.\n",
-        const string& MonthFail = "Invalid month, please try again.\n",
-        const string& YearFail = "Invalid year, please try again.\n",
-        const string& DateFail = "Invalid date, please try again.\n")
+        const string& DayFail = "Invalid day, please try again.\n\n",
+        const string& MonthFail = "Invalid month, please try again.\n\n",
+        const string& YearFail = "Invalid year, please try again.\n\n",
+        const string& DateFail = "Invalid date, please try again.\n\n")
     {
         clsPeriod UserInput = ReadPeriod(PeriodStartMessage, PeriodEndMessage,
             EnterDayMessage, EnterMonthMessage, EnterYearMessage,

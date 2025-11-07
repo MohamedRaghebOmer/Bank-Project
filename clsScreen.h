@@ -6,15 +6,15 @@ class clsScreen
 {
 protected:
 
-	void _DrawScreenHeader(const string Title, const string SubTitle = "")
+	static void _DrawScreenHeader(const string Title, const string SubTitle = "")
 	{
-		cout << "______________________________________";
-		cout << "\t\t\t" << Title << endl;
+		cout << "---------------------------------------------" << endl;
+		cout << "\t\t" << Title << endl;
 		if (SubTitle != "")
 		{
-			cout << "\t\t\t" << SubTitle << endl;
+			cout << "\t\t" << SubTitle << endl;
 		}
-		cout << "______________________________________";
+		cout << "---------------------------------------------" << endl;
 	}
 };
 
