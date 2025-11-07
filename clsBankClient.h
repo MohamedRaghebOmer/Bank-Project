@@ -22,20 +22,20 @@ private:
 
 
 
-    static clsBankClient _ConvertLinetoClientObject(string Line, string Seperator = "#//#")
+    static clsBankClient _ConvertLinetoClientObject(const string& Line, const string& Seperator = "#//#")
     {
-        vector<string> vClientData;
-        vClientData = clsString::Split(Line, Seperator);
+        vector<string> vClientData = clsString::Split(Line, Seperator);
 
         return clsBankClient(enMode::UpdateMode, vClientData[0], vClientData[1], vClientData[2],
             vClientData[3], vClientData[4], vClientData[5], stod(vClientData[6]));
 
     }
 
-    static string _ConverClientObjectToLine(clsBankClient Client, string Seperator = "#//#")
+    static string _ConverClientObjectToLine(clsBankClient Client, const string& Seperator = "#//#")
     {
 
         string stClientRecord = "";
+
         stClientRecord += Client.FirstName + Seperator;
         stClientRecord += Client.LastName + Seperator;
         stClientRecord += Client.Email + Seperator;
@@ -59,8 +59,7 @@ private:
         if (MyFile.is_open())
         {
 
-            string Line;
-
+            string Line = "";
 
             while (getline(MyFile, Line))
             {
@@ -78,18 +77,18 @@ private:
 
     }
 
-    static void _SaveCleintsDataToFile(vector <clsBankClient> vClients)
+    static void _SaveCleintsDataToFile(vector <clsBankClient>& vClients)
     {
 
         fstream MyFile;
         MyFile.open("Clients.txt", ios::out);//overwrite
 
-        string DataLine;
+        string DataLine = "";
 
         if (MyFile.is_open())
         {
 
-            for (clsBankClient C : vClients)
+            for (clsBankClient& C : vClients)
             {
                 if (C.MarkedForDeleted() == false)
                 {
@@ -109,8 +108,7 @@ private:
 
     void _Update()
     {
-        vector <clsBankClient> _vClients;
-        _vClients = _LoadClientsDataFromFile();
+        vector <clsBankClient> _vClients = _LoadClientsDataFromFile();
 
         for (clsBankClient& C : _vClients)
         {
@@ -128,11 +126,10 @@ private:
 
     void _AddNew()
     {
-
         _AddDataLineToFile(_ConverClientObjectToLine(*this));
     }
 
-    void _AddDataLineToFile(string  stDataLine)
+    void _AddDataLineToFile(const string& stDataLine)
     {
         fstream MyFile;
         MyFile.open("Clients.txt", ios::out | ios::app);
@@ -155,8 +152,8 @@ private:
 public:
 
 
-    clsBankClient(enMode Mode, string FirstName, string LastName,
-        string Email, string Phone, string AccountNumber, string PinCode,
+    clsBankClient(enMode Mode, const string& FirstName, const string& LastName,
+        string Email, const string& Phone, const string& AccountNumber, const string& PinCode,
         float AccountBalance) :
         clsPerson(FirstName, LastName, Email, Phone)
 
@@ -183,7 +180,7 @@ public:
         return _AccountNumber;
     }
 
-    void SetPinCode(string PinCode)
+    void SetPinCode(const string& PinCode)
     {
         _PinCode = PinCode;
     }
@@ -223,16 +220,15 @@ public:
 
     }*/
 
-    static clsBankClient Find(string AccountNumber)
+    static clsBankClient Find(const string& AccountNumber)
     {
-
-
         fstream MyFile;
         MyFile.open("Clients.txt", ios::in);//read Mode
 
         if (MyFile.is_open())
         {
-            string Line;
+            string Line = "";
+
             while (getline(MyFile, Line))
             {
                 clsBankClient Client = _ConvertLinetoClientObject(Line);
@@ -251,17 +247,15 @@ public:
         return _GetEmptyClientObject();
     }
 
-    static clsBankClient Find(string AccountNumber, string PinCode)
+    static clsBankClient Find(const string& AccountNumber, const string& PinCode)
     {
-
-
-
         fstream MyFile;
         MyFile.open("Clients.txt", ios::in);//read Mode
 
         if (MyFile.is_open())
         {
-            string Line;
+            string Line = "";
+
             while (getline(MyFile, Line))
             {
                 clsBankClient Client = _ConvertLinetoClientObject(Line);
@@ -282,7 +276,6 @@ public:
     enum enSaveResults { svFaildEmptyObject = 0, svSucceeded = 1, svFaildAccountNumberExists = 2 };
     enSaveResults Save()
     {
-
         switch (_Mode)
         {
         case enMode::EmptyMode:
@@ -326,22 +319,17 @@ public:
             break;
         }
         }
-
-
-
     }
 
-    static bool IsClientExist(string AccountNumber)
+    static bool IsClientExist(const string& AccountNumber)
     {
-
         clsBankClient Client1 = clsBankClient::Find(AccountNumber);
         return (!Client1.IsEmpty());
     }
 
     bool Delete()
     {
-        vector <clsBankClient> _vClients;
-        _vClients = _LoadClientsDataFromFile();
+        vector <clsBankClient> _vClients = _LoadClientsDataFromFile();
 
         for (clsBankClient& C : _vClients)
         {
@@ -361,7 +349,7 @@ public:
 
     }
 
-    static clsBankClient GetAddNewClientObject(string AccountNumber)
+    static clsBankClient GetAddNewClientObject(const string& AccountNumber)
     {
         return clsBankClient(enMode::AddNewMode, "", "", "", "", AccountNumber, "", 0);
     }
@@ -377,7 +365,7 @@ public:
 
         double TotalBalances = 0;
 
-        for (clsBankClient Client : vClients)
+        for (clsBankClient& Client : vClients)
         {
 
             TotalBalances += Client.AccountBalance;
@@ -385,6 +373,18 @@ public:
 
         return TotalBalances;
 
+    }
+
+    void Deposit(double Amount)
+    {
+        _AccountBalance += Amount;
+        Save();
+    }
+
+    void Withdraw(double Amount)
+    {
+        _AccountBalance -= Amount;
+        Save();
     }
 
 
