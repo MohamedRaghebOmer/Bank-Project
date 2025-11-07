@@ -71,10 +71,16 @@ private:
         clsManageUsersScreen::ShowManageUsersMenue();
     }
 
-    static void _ShowEndScreen()
+    /*static void _ShowEndScreen()
     {
         cout << "End Screen Will be here...\n";
 
+    }*/
+
+    static void _Logout()
+    {
+        CurrentUser = clsUser::Find("", "");
+        //then it will go back to main function.
     }
 
     static void _PerformMainMenueChoose(enMainMenueOptions Choose)
@@ -133,8 +139,7 @@ private:
         case eExit:
         {
             system("cls");
-            _ShowEndScreen();
-            _GoToBackToMainMenue();
+            _Logout();
             break;
         }
         default:
