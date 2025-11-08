@@ -11,9 +11,10 @@ class clsLoginScreen :protected clsScreen
 
 private:
 
-    static  void _Login()
+    static bool _Login()
     {
         bool LoginFaild = false;
+        short AttemptCounter = 3;
 
         string Username = "", Password = "";
 
@@ -22,7 +23,18 @@ private:
 
             if (LoginFaild)
             {
-                cout << "Invlaid Username/Password!\n\n";
+			    AttemptCounter--;
+                cout << "Invlaid Username/Password!" << endl;
+
+                if (AttemptCounter == 1)
+					cout << "\nYou have " << AttemptCounter << " try to login.\n\n";
+                else if (AttemptCounter != 0)
+				    cout << "\nYou have " << AttemptCounter << " more tries to login.\n\n";
+                else
+                {
+					cout << "\nYou have no more tries to login, Exiting the system.....\n";
+                    return false;
+                }
             }
 
 			// Read Username and Password
@@ -40,11 +52,11 @@ private:
 
 public:
 
-    static void ShowLoginScreen()
+    static bool ShowLoginScreen()
     {
         system("cls");
         _DrawScreenHeader("Login Screen");
-        _Login();
+        return _Login();
     }
 
 };
