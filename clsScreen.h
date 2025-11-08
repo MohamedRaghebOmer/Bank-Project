@@ -22,8 +22,7 @@ protected:
 			if (CurrentUser.UserName != "")
 				cout << "User: " << CurrentUser.UserName << endl;
 
-			clsDate Date = clsDate::GetSystemDate();
-			cout << "Date: " << Date.DateToString() << endl;
+			cout << "Date: " << clsDate::DateToString(clsDate()) << endl;
 			// End Udate User Name and date display
 
 			cout << "==============================================" << endl;	
@@ -42,8 +41,7 @@ protected:
 			if (CurrentUser.UserName != "")
 				cout << "\t\t\t\t\tUser: " << CurrentUser.UserName << endl;
 
-			clsDate Date = clsDate::GetSystemDate();
-			cout << "\t\t\t\t\tDate: " << Date.DateToString() << endl;
+			cout << "\t\t\t\t\tDate: " << clsDate::DateToString(clsDate()) << endl;
 			// End Udate User Name and date display
 
 			cout << "\t\t\t\t---------------------------------------------------" << endl;
