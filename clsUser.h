@@ -6,6 +6,8 @@
 #include <vector>
 #include <fstream>
 #include "Global.h"
+#include "clsDate.h"
+#include "clsUser.h"
 
 class clsUser : public clsPerson
 {
@@ -141,6 +143,13 @@ private:
     static clsUser _GetEmptyUserObject()
     {
         return clsUser(enMode::EmptyMode, "", "", "", "", "", "", 0);
+    }
+
+    string _PrepareLoginRecord(const string& SeperatorInFile = "#//#")
+    {
+        return clsDate::GetSystemDateAndTime() + SeperatorInFile + 
+            UserName + SeperatorInFile + Password +
+            SeperatorInFile + to_string(Permissions);
     }
 
 public:
@@ -355,6 +364,20 @@ public:
         else
             return false;
 
+    }
+
+    void RegisterLogin(const string FileName = "LoginRegister.txt")
+    {
+        string LoginRecord = _PrepareLoginRecord();
+
+        fstream LoginFile;
+        LoginFile.open(FileName, ios::out | ios::app);
+
+        if (LoginFile.is_open())
+        {
+            LoginFile << LoginRecord << endl;
+            LoginFile.close();
+        }
     }
 
 };

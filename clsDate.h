@@ -5,6 +5,7 @@
 #include <string>
 #include "clsString.h" 
 #include "Global.h"
+#include <ctime>
 
 class clsDate
 {
@@ -117,6 +118,40 @@ public:
 		return clsDate(Day, Month, Year);
 	}
 
+	static string GetSystemTime(bool use12HourFormat = false, const string Seperator = ":")
+	{
+		time_t now = time(0);
+		tm* ltm = localtime(&now);
+
+		int hour = ltm->tm_hour;
+		int min = ltm->tm_min;
+		int sec = ltm->tm_sec;
+		string ampm = "";
+
+		if (use12HourFormat) 
+		{
+			ampm = (hour >= 12) ? " PM" : " AM";
+			hour = hour % 12;
+			if (hour == 0) hour = 12; // 12 AM ?? 12 PM
+		}
+
+		string timeStr = to_string(hour) + Seperator +
+			(min < 10 ? "0" : "") + to_string(min) + Seperator +
+			(sec < 10 ? "0" : "") + to_string(sec) +
+			ampm;
+
+		return timeStr;
+	}
+
+	static string GetSystemDateAndTime(bool use12HourFormat = false,
+		const string SeperatorBetweenDateAndTime = " - ", 
+		const string TimeSeprator = ":", const string DateSeprator = "/")
+	{
+		return DateToString(GetSystemDate(), DateSeprator) + 
+			SeperatorBetweenDateAndTime + 
+			GetSystemTime(use12HourFormat, TimeSeprator);
+	}
+
 	static	bool IsValidDate(clsDate& Date)
 	{
 		if (Date.Day < 1 || Date.Day > 31)
@@ -155,9 +190,9 @@ public:
 		return IsValidDate(*this);
 	}
 
-	static string DateToString(clsDate Date)
+	static string DateToString(clsDate Date, const string Seprator = "/")
 	{
-		return  to_string(Date.Day) + "/" + to_string(Date.Month) + "/" + to_string(Date.Year);
+		return  to_string(Date.Day) + Seprator + to_string(Date.Month) + Seprator + to_string(Date.Year);
 	}
 
 	string DateToString()
