@@ -105,6 +105,13 @@ private:
             Permissions += clsUser::enPermissions::pManageUsers;
         }
 
+        cout << "\nLogin Register? [Y|N]: ";
+        cin >> Answer;
+        if (Answer == 'y' || Answer == 'Y')
+        {
+            Permissions += clsUser::enPermissions::pLoginRegister;
+        }
+
         return Permissions;
 
     }
@@ -120,7 +127,7 @@ public:
 
         while (!clsUser::IsUserExist(UserName))
         {
-            cout << "Account number is not found, please try againnnn\n\n";
+            cout << "Account number is not found, please try again\n\n";
             UserName = clsInputValidate::ReadString("Please enter Username: ");
         }
 

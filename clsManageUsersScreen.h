@@ -15,7 +15,7 @@ class clsManageUsersScreen : public clsScreen
 {
     static short _ReadManageUsersChoose()
     {
-        return clsInputValidate::ReadShortNumberBetween(1, 8, "Choos what do you want to do [1 to 8]: ", "Invalid choose, please try again.\n\n");
+        return clsInputValidate::ReadShortNumberBetween(1, 6, "Choos what do you want to do [1 to 6]: ",true, "Invalid choose, please try again.\n\n");
     }
 
     enum enManageUsersMenueOptions {
