@@ -492,24 +492,31 @@ public:
         return Tabs;
     }
 
-    static string EncryptText(string Text, short EncryptionKey = 2)
+    static string  EncryptText(string Text, short EncryptionKey = 2)
     {
-        for (int i = 0; i < (int)Text.length(); i++)
+
+        for (int i = 0; i <= Text.length(); i++)
         {
+
             Text[i] = char((int)Text[i] + EncryptionKey);
+
         }
 
         return Text;
+
     }
 
-    static string DecryptText(string Text, short EncryptionKey = 2)
+    static string  DecryptText(string Text, short EncryptionKey = 2)
     {
-        for (int i = 0; i < (int)Text.length(); i++)
-        {
-            Text[i] = char((int)Text[i] - EncryptionKey);
-        }
 
+        for (int i = 0; i <= Text.length(); i++)
+        {
+
+            Text[i] = char((int)Text[i] - EncryptionKey);
+
+        }
         return Text;
+
     }
 
     static string NumberToText(int Number)

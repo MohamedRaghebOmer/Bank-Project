@@ -7,7 +7,7 @@
 #include <fstream>
 #include "Global.h"
 #include "clsDate.h"
-#include "clsUser.h"
+#include "clsUtil.h"
 
 class clsUser : public clsPerson
 {
@@ -153,7 +153,7 @@ private:
             SeperatorInFile + to_string(Permissions);
     }
 
-    struct stLoginRegisterRecord; // This is a declaration for comming sturct
+    struct stLoginRegisterRecord;
     static stLoginRegisterRecord _ConvertLoginRegisterLineToRecord(const string& Line)
     {
         vector <string> vRegisterRecord = clsString::Split(Line, "#//#");
@@ -180,7 +180,7 @@ public:
         string DateAndTime;
         string Username;
         string Password;
-        short Permissions;
+        int Permissions;
     };
 
     clsUser(enMode Mode, const string& FirstName, const string& LastName,
