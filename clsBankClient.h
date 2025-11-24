@@ -174,7 +174,39 @@ private:
 
     }
 
+    struct stTransferLogRecord;
+    static stTransferLogRecord _lineToTransferLogRecord(const string& line, const string& Dilem = "#//#")
+    {
+        stTransferLogRecord Recored;
+        vector <string> vList = clsString::Split(line, Dilem);
+
+        if (vList.size() == 7)
+        {
+            Recored.DateAndTime = vList[0];
+            Recored.SourceAccountNumber = vList[1];
+            Recored.DestinationAccountNumber = vList[2];
+            Recored.Amount = stod(vList[3]);
+            Recored.SourceBalanceAfter = stod(vList[4]);
+            Recored.DestinationBalanceAfter = stod(vList[5]);
+            Recored.Username = vList[6];
+        }
+
+        return Recored;
+
+    }
+
 public:
+
+    struct stTransferLogRecord
+    {
+        string DateAndTime;
+        string SourceAccountNumber;
+        string DestinationAccountNumber;
+        float Amount;
+        float SourceBalanceAfter;
+        float DestinationBalanceAfter;
+        string Username;
+    };
 
     clsBankClient(enMode Mode, const string& FirstName, const string& LastName,
         string Email, const string& Phone, const string& AccountNumber, const string& PinCode,
@@ -297,7 +329,9 @@ public:
         return _GetEmptyClientObject();
     }
 
+
     enum enSaveResults { svFaildEmptyObject = 0, svSucceeded = 1, svFaildAccountNumberExists = 2 };
+    
     enSaveResults Save()
     {
         switch (_Mode)
@@ -306,22 +340,14 @@ public:
         {
             if (IsEmpty())
             {
-
                 return enSaveResults::svFaildEmptyObject;
-
             }
-
         }
 
         case enMode::UpdateMode:
         {
-
-
             _Update();
-
             return enSaveResults::svSucceeded;
-
-            break;
         }
 
         case enMode::AddNewMode:
@@ -339,8 +365,6 @@ public:
                 _Mode = enMode::UpdateMode;
                 return enSaveResults::svSucceeded;
             }
-
-            break;
         }
         }
     }
@@ -436,6 +460,27 @@ public:
 
     }
 
+    static vector <stTransferLogRecord> GetTransferLogList()
+    {
+        fstream myFile;
+        myFile.open("transfer_log.txt", ios::in);
 
+        vector <stTransferLogRecord> vList;
+
+        if (myFile.is_open())
+        {
+            string lineInFile = "";
+            
+            while (getline(myFile, lineInFile))
+            {
+                vList.push_back(_lineToTransferLogRecord(lineInFile));
+                lineInFile = "";
+            }
+
+            myFile.close();
+        }
+
+        return vList;
+    }
 };
 
