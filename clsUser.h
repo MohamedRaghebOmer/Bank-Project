@@ -27,7 +27,7 @@ private:
         vector<string> vUserData = clsString::Split(Line, Seperator);
 
         return clsUser(enMode::UpdateMode, vUserData[0], vUserData[1], vUserData[2],
-            vUserData[3], vUserData[4], vUserData[5], stoi(vUserData[6]));
+            vUserData[3], vUserData[4], clsUtil::DecryptText(vUserData[5]), stoi(vUserData[6]));
     }
 
     static string _ConverUserObjectToLine(clsUser User, const string& Seperator = "#//#")
@@ -40,7 +40,8 @@ private:
         UserRecord += User.Email + Seperator;
         UserRecord += User.Phone + Seperator;
         UserRecord += User.UserName + Seperator;
-        UserRecord += User.Password + Seperator;
+        // Save the password encrypted, not the main password
+        UserRecord += clsUtil::EncryptText(User.Password) + Seperator;
         UserRecord += to_string(User.Permissions);
 
         return UserRecord;
@@ -148,7 +149,7 @@ private:
     string _PrepareLoginRecord(const string& SeperatorInFile = "#//#")
     {
         return clsDate::GetSystemDateAndTime() + SeperatorInFile + 
-            UserName + SeperatorInFile + Password +
+            UserName + SeperatorInFile + clsUtil::EncryptText(Password) +
             SeperatorInFile + to_string(Permissions);
     }
 
@@ -161,7 +162,7 @@ private:
 
         Record.DateAndTime = vRegisterRecord[0];
         Record.Username = vRegisterRecord[1];
-        Record.Password = vRegisterRecord[2];
+        Record.Password = clsUtil::DecryptText(vRegisterRecord[2]);
         Record.Permissions = stoi(vRegisterRecord[3]);
 
         return Record;
