@@ -79,25 +79,6 @@ g++ -std=c++17 -o BankApp main.cpp Account.cpp Transaction.cpp Bank.cpp
 
 ---
 
-## 📁 Project Structure (Example)
-
-```text
-/Bank-Project-With-OOP-
-├── Account.h
-├── Account.cpp
-├── Transaction.h
-├── Transaction.cpp
-├── Bank.h
-├── Bank.cpp
-├── main.cpp
-├── data/
-│   ├── accounts.txt
-│   └── transactions.txt
-└── README.md
-```
-
----
-
 ## ✅ How to Use
 
 1. Run the application.
@@ -133,14 +114,13 @@ g++ -std=c++17 -o BankApp main.cpp Account.cpp Transaction.cpp Bank.cpp
 2. Create a new branch: `git checkout -b feature/YourFeature`
 3. Commit your changes: `git commit -m "Add some feature"`
 4. Push to the branch: `git push origin feature/YourFeature`
-5. Open a Pull Request — شرح التغييرات اللي عملتها
+5. Open a Pull Request
 
 ---
 
 ## 📫 Contact
 
 * **Owner / Author**: Mohamed Ragheb
-* **GitHub**: [MohamedRaghebOmer](https://github.com/MohamedRaghebOmer)
 * **Email**: [mohamedraghebomer@gmail.com](mailto:mohamedraghebomer@gmail.com)
 * **Telegram**: [@Mohamed_Ragheb0](https://t.me/Mohamed_Ragheb0)
 
@@ -148,4 +128,4 @@ g++ -std=c++17 -o BankApp main.cpp Account.cpp Transaction.cpp Bank.cpp
 
 ## 📄 License
 
-This project is open-source and can be licensed under **MIT License** (أضف الملف `LICENSE` لو مش موجود).
+This project is open-source and can be licensed under **MIT License**.
