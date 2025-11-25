@@ -6,7 +6,7 @@
 #include "clsString.h"
 #include <fstream>
 
-static const string _fileName = "currencies.txt";
+static const string _fileName = "Currencies.txt";
 
 class clsCurrency
 {
