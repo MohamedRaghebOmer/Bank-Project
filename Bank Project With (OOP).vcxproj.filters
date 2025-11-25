@@ -110,5 +110,8 @@
     <ClInclude Include="clsTransferLogScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="clsShowCurrencyExchangeScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

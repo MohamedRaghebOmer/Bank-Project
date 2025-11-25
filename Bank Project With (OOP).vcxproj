@@ -145,6 +145,7 @@
     <ClInclude Include="clsInputValidate.h" />
     <ClInclude Include="clsPerson.h" />
     <ClInclude Include="clsScreen.h" />
+    <ClInclude Include="clsShowCurrencyExchangeScreen.h" />
     <ClInclude Include="clsString.h" />
     <ClInclude Include="clsTotalBalancesScreen.h" />
     <ClInclude Include="clsTransactionsScreen.h" />
