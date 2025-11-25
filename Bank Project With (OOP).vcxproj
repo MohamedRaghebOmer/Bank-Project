@@ -130,11 +130,13 @@
     <ClInclude Include="clsAddNewUserScreen.h" />
     <ClInclude Include="clsBankClient.h" />
     <ClInclude Include="clsClientListScreen.h" />
+    <ClInclude Include="clsCurrency.h" />
     <ClInclude Include="clsDeleteClientScreen.h" />
     <ClInclude Include="clsDeleteUserScreen.h" />
     <ClInclude Include="clsDepositScreen.h" />
     <ClInclude Include="clsFindClientScreen.h" />
     <ClInclude Include="clsFindUserScreen.h" />
+    <ClInclude Include="clsListCurrenciesScreen.h" />
     <ClInclude Include="clsListUsersScreen.h" />
     <ClInclude Include="clsLoginRegisterScreen.h" />
     <ClInclude Include="clsLoginScreen.h" />
