@@ -1,6 +1,7 @@
 #pragma once
 
 #include "clsScreen.h"
+#include "clsListCurrenciesScreen.h"
 
 class clsShowCurrencyExchangeScreen : public clsScreen
 {
@@ -27,7 +28,7 @@ private:
 
     static void _ShowListCurrenciesScreen()
     {
-        cout << "Show List Currencies will be here" << endl;
+        clsListCurrenciesScreen::ShowListCurrenciesScreen();
     }
 
     static void _ShowFindCurrencyScreen()
