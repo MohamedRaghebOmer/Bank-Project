@@ -11,8 +11,9 @@
 #include "clsFindClientScreen.h"
 #include "clsTransactionsScreen.h"
 #include "clsManageUsersScreen.h"
-#include "Global.h"
 #include "clsLoginRegisterScreen.h"
+#include "clsShowCurrencyExchangeScreen.h"
+#include "Global.h"
 
 class clsMainMenueScreen : public clsScreen
 {
@@ -20,14 +21,15 @@ private:
 
     static short _ReadMainMenueChoose()
     {
-        return clsInputValidate::ReadShortNumberBetween(1, 9, "Choose what do you want to do [1 to 9]: ");
+        return clsInputValidate::ReadShortNumberBetween(1, 10, "Choose what do you want to do [1 to 10]: ");
     }
 
     enum enMainMenueOptions
     {
         eClientsList = 1, eAddNewClient = 2, eDeleteClient = 3,
         eUpdateClient = 4, eFindClient = 5, eShowTransactionsMenue = 6,
-        eManageUsers = 7, eLoginRegister = 8, eExit = 9
+        eManageUsers = 7, eLoginRegister = 8, eCurrencyExchange = 9,
+        eExit = 10
     };
 
     static void _GoToBackToMainMenue()
@@ -81,6 +83,11 @@ private:
     static void _ShowLoginRegisterScreen()
     {
         clsLoginRegisterScreen::ShowLoginRegisterScreen();
+    }
+
+    static void _ShowCurrencyExchangeScreen()
+    {
+        clsShowCurrencyExchangeScreen::ShowCurrencyExchangeMenueScreen();
     }
 
     static void _Logout()
@@ -149,6 +156,13 @@ private:
             _GoToBackToMainMenue();
             break;
         }
+        case eCurrencyExchange:
+        {
+            system("cls");
+            _ShowCurrencyExchangeScreen();
+            _GoToBackToMainMenue();
+            break;
+        }
         case eExit:
         {
             system("cls");
@@ -177,7 +191,8 @@ public:
         cout << "\t[6] Transactions." << endl;
         cout << "\t[7] Manage Users." << endl;
         cout << "\t[8] Login Register." << endl;
-        cout << "\t[9] Logout." << endl;
+        cout << "\t[9] Currency Exchange." << endl;
+        cout << "\t[10] Logout." << endl;
         cout << "===========================================" << endl;
         _PerformMainMenueChoose((enMainMenueOptions)_ReadMainMenueChoose());
     }
