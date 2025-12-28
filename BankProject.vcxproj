@@ -123,7 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Bank Project With %28OOP%29.cpp" />
+    <ClCompile Include="BankProject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="clsAddNewClientScreen.h" />
