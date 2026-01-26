@@ -1,0 +1,68 @@
+#pragma once
+#include <iostream>
+#include "Base\clsScreen.h"
+#include "Base\clsBankClient.h"
+#include "Lib's\clsInputValidate.h"
+#include "Base\Global.h"
+class clsDeleteClientScreen :protected clsScreen
+{
+
+private:
+    static void _PrintClient(clsBankClient& Client)
+    {
+        cout << "\nClient Card:";
+        cout << "\n___________________";
+        cout << "\nFirstName   : " << Client.FirstName;
+        cout << "\nLastName    : " << Client.LastName;
+        cout << "\nFull Name   : " << Client.FullName();
+        cout << "\nEmail       : " << Client.Email;
+        cout << "\nPhone       : " << Client.Phone;
+        cout << "\nAcc.Number  : " << Client.AccountNumber();
+        cout << "\nPassword    : " << Client.PinCode;
+        cout << "\nBalance     : " << Client.AccountBalance;
+        cout << "\n___________________\n";
+
+    }
+
+public:
+    static void ShowDeleteClientScreen()
+    {
+        if (!CheckAccessRights(clsUser::enPermissions::pDeleteClient))
+        {
+            return;// this will exit the function and it will not continue
+        }
+
+        _DrawScreenHeader("Delete Client Screen");
+
+        string AccountNumber = clsInputValidate::ReadString("Please Enter Account Number: ");
+        
+        while (!clsBankClient::IsClientExist(AccountNumber))
+        {
+            cout << "Account number is not found, please try agian.\n\n";
+            AccountNumber = clsInputValidate::ReadString("Please Enter Account Number: ");
+        }
+
+        clsBankClient Client1 = clsBankClient::Find(AccountNumber);
+        _PrintClient(Client1);
+
+        cout << "\nAre you sure you want to delete this client [Y|N]: ";
+
+        char Answer = 'n';
+        cin >> Answer;
+
+        if (Answer == 'y' || Answer == 'Y')
+        {
+            if (Client1.Delete())
+            {
+                cout << "\nClient Deleted Successfully :-)\n";
+                _PrintClient(Client1);
+            }
+            else
+            {
+                cout << "\nError Client Was not Deleted\n";
+            }
+        }
+    }
+
+};
+
