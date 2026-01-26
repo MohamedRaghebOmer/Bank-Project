@@ -118,14 +118,6 @@ g++ -std=c++17 -o BankApp main.cpp Account.cpp Transaction.cpp Bank.cpp
 
 ---
 
-## 📫 Contact
-
-* **Owner / Author**: Mohamed Ragheb
-* **Email**: [mohamedraghebomer@gmail.com](mailto:mohamedraghebomer@gmail.com)
-* **Telegram**: [@Mohamed_Ragheb0](https://t.me/Mohamed_Ragheb0)
-
----
-
 ## 📄 License
 
 This project is open-source and can be licensed under **MIT License**.
