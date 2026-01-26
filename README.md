@@ -1,123 +1,128 @@
-# Bank Project With OOP 🏦
+# 🏦 Enterprise Bank Management System (C++)
 
-A comprehensive **Bank Management System** implemented in C++ using Object‑Oriented Programming (OOP) principles. This project simulates real‑world banking operations including account management, transactions, and persistent data storage, offering a robust CLI (command-line) experience.
+![Language](https://img.shields.io/badge/Language-C++17-00599C.svg)
+![Architecture](https://img.shields.io/badge/Architecture-Modular%20OOP-orange.svg)
+![Data](https://img.shields.io/badge/Data-Flat%20File%20%28NoSQL%29-green.svg)
 
----
+A robust, professional-grade simulation of a banking ecosystem built entirely in **C++**. This project is a mastery showcase of **Object-Oriented Design (OOD)** and **Low-Level Data Management**. 
 
-## 🔍 Features
-
-* **Account Management**:
-
-  * Create new bank accounts
-  * Edit or delete existing accounts
-  * Search for customers by ID or name
-
-* **Transactions**:
-
-  * Deposit and withdraw funds
-  * Transfer money between accounts
-  * Check account balance
-
-* **Persistence**:
-
-  * Data is stored in files, ensuring information is saved across sessions
-  * Transaction history is maintained for each account
-
-* **OOP Design**:
-
-  * Use of classes and encapsulation for account, transaction, and bank logic
-  * Inheritance and polymorphism for different account types (if applicable)
-  * Clean separation of concerns (UI / business logic / data storage)
-
-* **User Interface**:
-
-  * Text-based / console interface: simple, fast, and platform-independent
-  * Menu-driven interaction for ease of use
-
-* **Error Handling & Validation**:
-
-  * Input validation to prevent invalid operations
-  * Safe checks on withdrawal, transfers, etc.
+Unlike standard applications that rely on SQL engines, this system implements a **custom-built data persistence layer**, handling all data serialization, parsing, and retrieval using **Flat Text Files**. This approach demonstrates a deep understanding of data structures, string manipulation, and algorithm efficiency without external dependencies.
 
 ---
 
-## 🛠️ Why This Project Is Valuable
+## 🏗️ Architectural Design
+The project follows a strict **Separation of Concerns** principle, dividing the application into three logical layers:
 
-* It’s **large-scale and realistic** — more than a toy example.
-* Demonstrates strong grasp of **OOP design patterns** in C++.
-* Teaches how to build a **stateful application** with persistent data (files).
-* Excellent project to showcase on your GitHub profile / portfolio for recruiters.
-* Can serve as a foundation for future expansion (e.g., GUI, database integration).
+1.  **Core Layer (`src/Core`):** Contains Business Objects (`Client`, `User`, `Currency`) and logic. It has zero knowledge of the UI.
+2.  **Screen Layer (`src/Screens`):** Handles all Console UI rendering and user inputs. It communicates only with the Core layer.
+3.  **Utility Layer (`src/Lib`):** Helper classes for Date validation, String manipulation, and Input validation.
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Key Features
 
-### Prerequisites
+### 1. 👥 Client Management (CRUD)
+Complete lifecycle management for bank clients, implemented with direct file manipulation:
+- **Add New Client:** Serializes object data and appends to `Clients.txt`.
+- **Update/Delete:** Reads file into memory (vector), modifies the specific object, and rewrites the file (simulating a database commit).
+- **Find Client:** Efficient linear search algorithms to retrieve client details by Account Number.
 
-* A C++ compiler (e.g., g++, MSVC)
-* Basic build tools (make or just use IDE)
-* Git (to clone the repository)
+### 2. 💸 Transaction System
+- **Deposit & Withdraw:** Real-time balance updates with strict validation (e.g., insufficient funds check).
+- **Transfer:** Atomic transfer operations between two accounts.
+- **Transfer Log:** Automatically records every transfer transaction into a `TransferLog.txt` file with timestamps.
 
-### Clone the Repository
+### 3. 🔐 Security & Access Control
+- **Authentication:** Secure Login/Logout mechanism.
+- **Role-Based Access Control (RBAC):** Implemented using **Bitwise Operators**. This allows granular permission settings (e.g., a User can be allowed to *Add Clients* but blocked from *Deleting Clients*).
+- **Login Register:** Audits all login attempts (Success/Fail) in `LoginRegister.txt`.
 
-```bash
-git clone https://github.com/MohamedRaghebOmer/Bank-Project-With-OOP-.git
-cd Bank-Project-With-OOP-
+### 4. 💱 Currency Exchange Engine
+A fully functional module for managing international currencies:
+- **Currency Data:** Stores currency codes, names, and rates in `Currencies.txt`.
+- **Exchange Calculator:** Converts amounts between any two currencies using USD as a base intermediate.
+- **Update Rates:** Admin capability to modify exchange rates dynamically.
+
+---
+
+## 💾 Data Persistence (The "No-DB" Approach)
+**This system does NOT use SQL, ADO.NET, or any external Database.**
+
+Instead, it acts as its own Database Engine by implementing a custom **ORM (Object-Relational Mapping)** logic:
+* **Serialization:** Converts C++ Objects $\rightarrow$ String Records (Line by line) with a custom separator (`#//#`).
+* **Deserialization:** Parses String Lines $\rightarrow$ C++ Objects when loading data into memory.
+* **Atomicity:** Ensures file integrity during write operations.
+
+*Example of the internal data format:*
+`A101#//#1234#//#John Doe#//#5000.00#//#Active`
+
+---
+
+## 📂 Project Structure (Refactored)
+
+```text
+📁 Bank-System-Root
+├── 📁 src
+│   ├── 📁 Core          # Business Entities (clsBankClient, clsUser, clsCurrency)
+│   ├── 📁 Screens       # UI & Menus (clsMainScreen, clsLoginScreen)
+│   ├── 📁 Lib           # Utilities (clsDate, clsString, clsUtil)
+│   └── 📄 Main.cpp      # Entry Point
+├── 📁 Data              # Text Files (The Database)
+│   ├── 📄 Clients.txt
+│   ├── 📄 Users.txt
+│   └── 📄 Currencies.txt
+└── 📄 README.md
+
 ```
 
-### Build & Run
+---
 
-If you're using a terminal / command-line environment:
+## 📸 Screenshots
 
+### Main Dashboard & Permissions
+
+The system dynamically builds the menu based on the logged-in user's permissions (Bitwise check).
+
+*(Add Screenshot Here)*
+
+### Currency Exchange Menu
+
+Real-time conversion and rate management interface.
+
+*(Add Screenshot Here)*
+
+---
+
+## 🛠️ Getting Started
+
+1. **Clone the Repository:**
 ```bash
-g++ -std=c++17 -o BankApp main.cpp Account.cpp Transaction.cpp Bank.cpp
-./BankApp
+git clone [https://github.com/YourUsername/Bank-System-CPP.git](https://github.com/YourUsername/Bank-System-CPP.git)
+
 ```
 
-> **Note**: Replace `.cpp` file names with the actual ones in your project.
+
+2. **Open in Visual Studio:**
+* Open the `.sln` file.
+* Ensure the `Data` folder is in the same directory as the executable (or update the file paths in `clsString.h` / Configuration).
+
+
+3. **Build & Run:**
+* Select **Release** mode for better performance.
+* Run via Local Windows Debugger.
+
+
 
 ---
 
-## ✅ How to Use
+## 🔮 Future Improvements
 
-1. Run the application.
-2. Choose from the main menu: create account / make transaction / view accounts / exit.
-3. Follow on-screen prompts to enter user details, deposit / withdraw, or transfer money.
-4. All data is saved in text files so next time you run, your accounts persist.
-
----
-
-## 📚 What You’ll Learn / Demonstrate
-
-* Core **OOP concepts** in C++ (classes, inheritance, encapsulation)
-* File handling in C++ (reading/writing persistent data)
-* Basic user-interface logic via console
-* Data validation and error handling in a real-world-like scenario
-* Modular code design
+* [ ] Implement an encryption algorithm for passwords in text files.
+* [ ] Add an ATM interface module.
+* [ ] Migrate the Data Layer to SQL Server (as a separate branch to compare implementations).
 
 ---
 
-## 🧪 Future Improvements (Next Steps)
+## ⚖️ License
 
-* Add **unit tests** for core classes (Account, Transaction, Bank)
-* Move from plain files to a **lightweight database** (e.g., SQLite)
-* Create a **GUI** (desktop or web) for better usability
-* Implement **authentication** (PINs or passwords) for accounts
-* Add **reporting** (monthly summaries, transaction history filtering)
-
----
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a new branch: `git checkout -b feature/YourFeature`
-3. Commit your changes: `git commit -m "Add some feature"`
-4. Push to the branch: `git push origin feature/YourFeature`
-5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is open-source and can be licensed under **MIT License**.
+This project is licensed under the MIT License.
