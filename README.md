@@ -8,7 +8,7 @@ A robust, professional-grade simulation of a banking ecosystem built entirely in
 
 Unlike standard applications that rely on SQL engines, this system implements a **custom-built data persistence layer**, handling all data serialization, parsing, and retrieval using **Flat Text Files**. This approach demonstrates a deep understanding of data structures, string manipulation, and algorithm efficiency without external dependencies.
 
----
+--- 
 
 ## 🏗️ Architectural Design
 The project follows a strict **Separation of Concerns** principle, dividing the application into three logical layers:
