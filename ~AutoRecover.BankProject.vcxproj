@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -126,6 +126,11 @@
     <ClCompile Include="BankProject.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Screens\clsLoginScreen.h" />
+    <ClInclude Include="Screens\clsMainMenueScreen.h" />
+    <ClInclude Include="Screens\clsManageUsersScreen.h" />
+    <ClInclude Include="Screens\clsShowCurrencyExchangeScreen.h" />
+    <ClInclude Include="Screens\clsTransactionsScreen.h" />
     <ClInclude Include="src\Base\clsBankClient.h" />
     <ClInclude Include="src\Base\clsCurrency.h" />
     <ClInclude Include="src\Base\clsPerson.h" />
@@ -151,11 +156,6 @@
     <ClInclude Include="src\Lib%27s\clsPeriod.h" />
     <ClInclude Include="src\Lib%27s\clsString.h" />
     <ClInclude Include="src\Lib%27s\clsUtil.h" />
-    <ClInclude Include="src\Screens\clsLoginScreen.h" />
-    <ClInclude Include="src\Screens\clsMainMenueScreen.h" />
-    <ClInclude Include="src\Screens\clsManageUsersScreen.h" />
-    <ClInclude Include="src\Screens\clsShowCurrencyExchangeScreen.h" />
-    <ClInclude Include="src\Screens\clsTransactionsScreen.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
