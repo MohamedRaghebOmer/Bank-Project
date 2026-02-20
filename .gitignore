@@ -50,4 +50,27 @@ x86/
 *.gz
 *.iso
 *0
-*~AutoRecover.BankProject.vcxproj
+
+#=========================
+# Visual Studio folders
+.vs/
+Debug/
+Release/
+x64/
+ipch/
+
+# Build files
+*.obj
+*.exe
+*.pdb
+*.ilk
+*.log
+
+# User-specific files
+*.user
+*.suo
+*.VC.db
+*.VC.opendb
+
+# Auto recovery
+~AutoRecover.*
