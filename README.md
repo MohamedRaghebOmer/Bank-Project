@@ -61,17 +61,24 @@ Instead, it acts as its own Database Engine by implementing a custom **ORM (Obje
 ## 📂 Project Structure (Refactored)
 
 ```text
-📁 Bank-System-Root
 ├── 📁 src
-│   ├── 📁 Core          # Business Entities (clsBankClient, clsUser, clsCurrency)
-│   ├── 📁 Screens       # UI & Menus (clsMainScreen, clsLoginScreen)
-│   ├── 📁 Lib           # Utilities (clsDate, clsString, clsUtil)
-│   └── 📄 Main.cpp      # Entry Point
-├── 📁 Data              # Text Files (The Database)
-│   ├── 📄 Clients.txt
-│   ├── 📄 Users.txt
-│   └── 📄 Currencies.txt
-└── 📄 README.md
+│   ├── 📁 Base              # Shared base classes & foundational abstractions
+│   ├── 📁 Core              # Business logic & main domain entities
+│   ├── 📁 Lib's             # Helper & utility classes (Date, String, Validation, etc.)
+│   ├── 📁 Screens           # Console UI screens & menu handlers
+│
+├── 📁 Data                  # Flat-file data storage (text-based persistence layer)
+│   ├── 📄 Clients.txt       # Stores all client personal info and account details
+│   ├── 📄 Currencies.txt    # stores countries with their currency codes, names, and exchange rates
+│   ├── 📄 LoginRegister.txt # Login activity records
+│   ├── 📄 transfer_log.txt  # Money transfer history
+│   └── 📄 Users.txt         # Stores login records: Name, Email, Phone, Username, PIN, and login status
+│
+├── 📄 BankProject.cpp       # Application entry point (main function)
+├── 📄 BankProject.sln       # Visual Studio solution file
+├── 📄 BankProject.vcxproj   # Visual Studio project configuration
+├── 📄 .gitignore            # Ignored build & environment files
+└── 📄 README.md             # Project documentation
 
 ```
 
@@ -83,13 +90,14 @@ Instead, it acts as its own Database Engine by implementing a custom **ORM (Obje
 
 The system dynamically builds the menu based on the logged-in user's permissions (Bitwise check).
 
-*(Add Screenshot Here)*
+<img width="1483" height="762" alt="Screenshot 2026-02-20 073030" src="https://github.com/user-attachments/assets/3d420622-005b-446d-9f02-dfe9148476e6" />
+
 
 ### Currency Exchange Menu
 
 Real-time conversion and rate management interface.
 
-*(Add Screenshot Here)*
+<img width="1920" height="1080" alt="Screenshot 2026-02-20 073201" src="https://github.com/user-attachments/assets/85021c59-9447-4a04-97ca-b7b44b852e22" />
 
 ---
 
@@ -117,8 +125,8 @@ git clone [https://github.com/YourUsername/Bank-System-CPP.git](https://github.c
 
 ## 🔮 Future Improvements
 
-* [ ] Implement an encryption algorithm for passwords in text files.
-* [ ] Add an ATM interface module.
+* [x] Implement an encryption algorithm for passwords in text files.
+* [x] Add an ATM interface module.
 * [ ] Migrate the Data Layer to SQL Server (as a separate branch to compare implementations).
 
 ---
