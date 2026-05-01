@@ -101,6 +101,12 @@ Real-time conversion and rate management interface.
 
 ---
 
+## 🎥 YouTube Demo
+
+Watch the project demo here: https://youtu.be/nf8Ne5Q4CZU
+
+---
+
 ## 🛠️ Getting Started
 
 1. **Clone the Repository:**
